@@ -5,7 +5,14 @@ case "$(uname -s)" in
     platform=linux64
     ;;
   "Darwin")
-    platform=macos
+    case "$(uname -p)" in
+      "arm")
+        platform=macos-arm64
+        ;;
+      *)
+        platform=macos-x86_64
+        ;;
+    esac
     ;;
 esac
 
